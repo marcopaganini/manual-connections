@@ -147,26 +147,18 @@ while true; do
       echo -e "${red}The API did not return OK when trying to bind port... Exiting.${nc}"
       exit 1
     fi
-<<<<<<< HEAD
-    echo -e Forwarded port'\t'"${green}$port${nc}"
-    echo -e Refreshed on'\t'"${green}$(date)${nc}"
-    echo -e Expires on'\t'"${red}$(date --date="$expires_at")${nc}"
-    echo -e "\n${green}This script will need to remain active to use port forwarding, and will refresh every 15 minutes.${nc}\n"
-=======
-
     if [[ "${PF_POST_COMMAND}" ]] && [[ "${port}" != "${old_port}" ]]; then
-      echo -e "${GREEN}Note: Port has changed from ${old_port} to ${port}. Running PF_POST_COMMAND.${NC}"
+      echo -e "${green}Note: Port has changed from ${old_port} to ${port}. Running PF_POST_COMMAND.${NC}"
       if ! "${PF_POST_COMMAND}" "${port}" "${old_port}"; then
-        echo -e "${RED}Warning: "${PF_POST_COMMAND}" returned non-zero.${NC}"
+        echo -e "${red}Warning: "${PF_POST_COMMAND}" returned non-zero.${NC}"
       fi
       old_port="${port}"
     fi
 
-    echo -e Forwarded port'\t'${GREEN}$port${NC}
-    echo -e Refreshed on'\t'${GREEN}$(date)${NC}
-    echo -e Expires on'\t'${RED}$(date --date="$expires_at")${NC}
-    echo -e "\n${GREEN}This script will need to remain active to use port forwarding, and will refresh every 15 minutes.${NC}\n"
->>>>>>> 7bff96a (Add option to call external command on port change.)
+    echo -e Forwarded port'\t'"${green}$port${nc}"
+    echo -e Refreshed on'\t'"${green}$(date)${nc}"
+    echo -e Expires on'\t'"${red}$(date --date="$expires_at")${nc}"
+    echo -e "\n${green}This script will need to remain active to use port forwarding, and will refresh every 15 minutes.${nc}\n"
 
     # sleep 15 minutes
     sleep 900
